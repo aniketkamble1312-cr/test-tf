@@ -2,7 +2,6 @@ version: 3
 projects:
 - name: default
   dir: .
-  workflow: default
   terraform_version: v1.5.0
   autoplan:
     when_modified:
@@ -11,16 +10,3 @@ projects:
     enabled: true
   apply_requirements:
     - approved
-
-workflows:
-  default:
-    plan:
-      steps:
-        - init
-        - plan:
-            extra_args: ["-lock=false"]
-    apply:
-      steps:
-        - plan
-        - apply
-
