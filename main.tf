@@ -20,6 +20,6 @@ resource "random_string" "test" {
 resource "random_pet" "name" {
   prefix    = var.prefix
   separator = "-"
-  length    = 2
+  length    = 4
 }
 
