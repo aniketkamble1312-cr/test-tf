@@ -1,26 +1,18 @@
 version: 3
 projects:
-- name: default
-  dir: .
-  workflow: default
-  terraform_version: v1.5.0
+- name: qa-data-gcs
+  dir: ./environments/qa/data/gcs
+  terraform_version: v1.9.0
   autoplan:
     when_modified:
       - "*.tf"
       - "*.tfvars"
     enabled: true
-  apply_requirements:
-    - approved
-
-workflows:
-  default:
-    plan:
-      steps:
-        - init
-        - plan:
-            extra_args: ["-lock=false"]
-    apply:
-      steps:
-        - plan
-        - apply
-
+- name: qa-networking-load-balancer
+  dir: ./environments/qa/networking/load-balancer
+  terraform_version: v1.9.0
+  autoplan:
+    when_modified:
+      - "*.tf"
+      - "*.tfvars"
+    enabled: true
