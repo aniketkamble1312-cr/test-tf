@@ -1,8 +1,16 @@
 version: 3
 projects:
-- name: default
-  dir: ./environments/qa/**
-  terraform_version: v1.5.0
+- name: qa-data-gcs
+  dir: ./environments/qa/data/gcs
+  terraform_version: v1.9.0
+  autoplan:
+    when_modified:
+      - "*.tf"
+      - "*.tfvars"
+    enabled: true
+- name: qa-networking-load-balancer
+  dir: ./environments/qa/networking/load-balancer
+  terraform_version: v1.9.0
   autoplan:
     when_modified:
       - "*.tf"
